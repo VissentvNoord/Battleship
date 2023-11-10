@@ -4,7 +4,7 @@ class Ship{
         this.hits = 0;
     }
 
-    Hit(){
+    hit(){
         this.hits++;
         return this.hits;
     }
@@ -25,7 +25,19 @@ class Gameboard{
         this.height = height;
     }
 
+    placeShip(ship, position){
+        let placed = false;
+        const length = ship.length;
 
+        if(position.x <= this.width && position.y <= this.height){
+            const coverage = length + position.x;
+            if(coverage <= this.width){
+                placed = true;
+            }
+        }
+
+        return placed;
+    }
 }
 
 export {Ship, Gameboard}
